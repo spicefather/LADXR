@@ -33,7 +33,7 @@ import os
 import time
 
 
-if __name__ == "__main__":
+def main(mainargs=None):
     import sys
     import argparse
 
@@ -95,7 +95,7 @@ if __name__ == "__main__":
     parser.add_argument('--linkspalette', dest="linkspalette", type=int, default=None,
         help="Force the palette of link")
 
-    args = parser.parse_args()
+    args = parser.parse_args(mainargs)
 
     start_time = time.monotonic()
     total_retries = 0
@@ -277,3 +277,6 @@ if __name__ == "__main__":
         print("Generated: %d roms" % (args.count))
         print("Success ratio: %g%%" % (args.count / (args.count + total_retries) * 100))
         print("Total time: %gsec (Per generation: %gsec)" % (total_time, total_time / (args.count + total_retries)))
+
+if __name__ == "__main__":
+    main()
